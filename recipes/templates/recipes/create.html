@@ -16,17 +16,11 @@
 			</nav>
 		</header>
 		<main>
-			<div class="recipe-grid">
-				{% for recipe in recipe_list %}
-				<div>
-					<h3>
-						<a href={% url 'show-recipe' recipe.id %}>{{ recipe.title }}</a>
-					</h3>
-					<img src="{{ recipe.picture }}" />
-					<div>4.3 star</div>
-				</div>
-				{% endfor %}
-			</div>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>Create</button>
+      </form>
 		</main>
 		<footer>Made with love by Scrumptious Recipes</footer>
 	</body>
