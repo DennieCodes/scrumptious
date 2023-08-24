@@ -7,3 +7,10 @@ def show_recipe(request, id):
         "recipe_object": recipe
     }
     return render(request, "recipes/detail.html", context)
+
+def recipe_list(request):
+    recipes = Recipe.objects.all()
+    context = {
+        "recipe_list": recipes,
+    }
+    return render(request, "recipes/list.html", context)
