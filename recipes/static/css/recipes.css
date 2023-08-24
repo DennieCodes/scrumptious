@@ -46,3 +46,9 @@ a {
 .ingredients-table tr:nth-child(even) {
 	background-color: rgba(0, 0, 0, 0.1);
 }
+
+a .primary {
+	background-color: green;
+	color: white;
+	padding: 0.5em 2em;
+}

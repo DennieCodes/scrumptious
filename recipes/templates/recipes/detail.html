@@ -20,6 +20,9 @@
 			<img src="{{ recipe_object.picture }}" />
 			<p>{{ recipe_object.description }}</p>
 			<div>4.3 stars</div>
+
+			<a class="primary" href="{% url 'update_recipe' recipe_object.id %}">Update Recipe</a>
+
 			<h2>Ingredients</h2>
 			<table class="ingredients-table">
 				<thead>
