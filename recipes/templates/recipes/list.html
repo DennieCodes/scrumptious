@@ -23,7 +23,7 @@
 						<a href={% url 'show-recipe' recipe.id %}>{{ recipe.title }}</a>
 					</h3>
 					<p>Created on: {{ recipe.created_on | date:'j F Y'}}</p>
-					<img src="{{ recipe.picture }}" />
+					<img src="{{ recipe.picture | default:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRu2prUKkyIK7VKDANwZK0Lf2FhsRK1d6wjN-sxqqqqDXIYxu8-v_8rNYjXMrZj-XGtBGQ&usqp=CAU'}}" />
 					<div>4.3 star</div>
 				</div>
 				{% endfor %}
