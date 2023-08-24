@@ -22,6 +22,7 @@
 					<h3>
 						<a href={% url 'show-recipe' recipe.id %}>{{ recipe.title }}</a>
 					</h3>
+					<p>Created on: {{ recipe.created_on | date:'j F Y'}}</p>
 					<img src="{{ recipe.picture }}" />
 					<div>4.3 star</div>
 				</div>
