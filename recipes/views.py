@@ -10,7 +10,7 @@ def update_recipe(request, id):
         form = RecipeForm(request.POST, instance=recipe)
         if form.is_valid():
             form.save()
-            return redirect('show-recipe', id=id)
+            return redirect('show_recipe', id=id)
     else:
         form = RecipeForm(instance=recipe)
 
@@ -54,5 +54,7 @@ def recipe_list(request):
 
 # DELETE RECIPE
 def delete_recipe(request, id):
-    if request.method == 'DELETE':
-        pass
+    recipe = get_object_or_404(Recipe, id=id)
+
+    recipe.delete()
+    return redirect('recipe_list')
