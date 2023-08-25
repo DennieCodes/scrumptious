@@ -1,27 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{{ recipe_object.title }} - Scrumptious Recipes</title>
-		{% load static %}
-		<link rel="stylesheet" href="{% static 'css/recipes.css' %}" />
-	</head>
-	<body>
-		<header>
-			<nav>
-				<a href={% url 'recipe_list' %}>Main page</a>
-				<a href={% url 'create_recipe' %}>Create Recipe</a>
-			</nav>
-		</header>
-		<main>
-      <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button>Create</button>
-      </form>
-		</main>
-		<footer>Made with love by Scrumptious Recipes</footer>
-	</body>
-</html>
+<!-- prettier-ignore -->
+{% block title %}
+	{{ recipe_object.title }} - Scrumptious Recipes
+{% endblock title %}
+
+{% block content %}
+<main>
+	<form method="POST">
+		{% csrf_token %} {{ form.as_p }}
+		<button>Create</button>
+	</form>
+</main>
+{% end block content %}
