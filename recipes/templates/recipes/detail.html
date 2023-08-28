@@ -29,26 +29,12 @@
 			</tr>
 		</thead>
 		<tbody>
+			{% for ingredient in recipe_object.ingredients.all %}
 			<tr>
-				<td>1 cup</td>
-				<td>Green beans</td>
+				<td>{{ ingredient.amount }}</td>
+				<td>{{ ingredient.food_item }}</td>
 			</tr>
-			<tr>
-				<td>3 ears</td>
-				<td>Fresh corn</td>
-			</tr>
-			<tr>
-				<td>2 cups</td>
-				<td>Tomatillo salsa</td>
-			</tr>
-			<tr>
-				<td>8</td>
-				<td>Corn tortillas</td>
-			</tr>
-			<tr>
-				<td>0.5 cups</td>
-				<td>Cotija cheese</td>
-			</tr>
+			{% endfor %}
 		</tbody>
 	</table>
 
