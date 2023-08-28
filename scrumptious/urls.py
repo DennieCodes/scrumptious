@@ -25,4 +25,5 @@ urlpatterns = [
     path('', redirect_to_recipe, name="home_page"),
     path('admin/', admin.site.urls),
     path('', include('recipes.urls')),
+    path("accounts/", include("accounts.urls")),
 ]
