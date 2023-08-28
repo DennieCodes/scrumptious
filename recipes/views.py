@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib.auth.decorators import login_required
 from recipes.models import Recipe
 from recipes.forms import RecipeForm
 
@@ -21,11 +22,14 @@ def update_recipe(request, id):
     return render(request, "recipes/update.html", context)
 
 # CREATE RECIPE
+@login_required
 def create_recipe(request):
     if request.method == 'POST':
         form = RecipeForm(request.POST)
         if form.is_valid():
-            form.save()
+            recipe = form.save(False)
+            recipe.author = request.user
+            recipe.save()
             return redirect('recipe_list')
     else:
         form = RecipeForm()
@@ -47,6 +51,16 @@ def show_recipe(request, id):
 # SHOW ALL RECIPES
 def recipe_list(request):
     recipes = Recipe.objects.all()
+    context = {
+        "recipe_list": recipes,
+    }
+    return render(request, "recipes/list.html", context)
+
+# SHOW MY RECIPES
+@login_required
+def my_recipe_list(request):
+    # request.user has the current user
+    recipes = Recipe.objects.filter(author=request.user).values()
     context = {
         "recipe_list": recipes,
     }

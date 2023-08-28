@@ -14,8 +14,10 @@
 		<header>
 			<nav>
 				<a href={% url 'recipe_list' %}>Main page</a>
-				{% block create_recipe %}{%endblock create_recipe %}
+
 				{% if user.is_authenticated %}
+					{% block create_recipe %}{%endblock create_recipe %}
+					<a href="{% url 'my_recipe_list' %}">Show My Recipes</a>
 				  Hello, {{ user.username }}
 					<a href="{% url 'user_logout' %}">Log out</a>
 				{% else %}
