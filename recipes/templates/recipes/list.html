@@ -5,6 +5,10 @@
 	{{ recipe_object.title }} - Scrumptious Recipe
 {% endblock title %}
 
+{% block create_recipe %}
+<a href={% url 'create_recipe' %}>Create Recipe</a>
+{% endblock create_recipe %}
+
 {% block content %}
 <main>
 	<div class="recipe-grid">
